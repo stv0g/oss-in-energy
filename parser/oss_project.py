@@ -1,9 +1,12 @@
 from dataclasses import dataclass
 from datetime import date
 from typing import Any, Callable, Dict, List, Optional, Tuple
+from urllib.parse import urlparse
 
 import validators
 from dateutil.parser import parse
+
+from github_api import GithubRepo
 
 # TODO: ist this a good approach?
 # class Category(Enum):
@@ -69,6 +72,11 @@ class OpenSourceProject:
         repository = get_dict_value(d, "repository")
         assert isinstance(repository, str), "Project needs to have a valid url!"
 
+        repo_api = None
+        parsed_repo_url = urlparse(repository)
+        if parsed_repo_url.netloc == "github.com":
+            repo_api = GithubRepo(repository)
+
         description = get_dict_value(d, "description")
         assert isinstance(
             description, str
@@ -86,7 +94,11 @@ class OpenSourceProject:
         first_release_str = get_dict_value(d, "first_release")
         first_release: Optional[date] = None
         if first_release_str is not None:
-            first_release = parse(first_release_str)
+            first_release = parse(first_release_str).date()
+        elif repo_api is not None:
+            api_release_info = repo_api.get_first_release()
+            if api_release_info is not None:
+                first_release = api_release_info.date()
 
         languages = get_dict_value(d, "languages")
         # TODO: Convert to list
@@ -100,7 +112,12 @@ class OpenSourceProject:
 
         # TODO: generate from API
         last_update = None
+
         last_release = None
+        if repo_api is not None:
+            api_last_release = repo_api.get_last_release()
+            if api_last_release is not None:
+                last_release = (api_last_release[0].date(), api_last_release[1])
 
         return cls(
             name=name,
@@ -146,6 +163,13 @@ class OpenSourceProject:
             else:
                 return ""
 
+        def fmt_release(release):
+            if release is not None:
+                retval = f"{release[0]} - ({simple_url(release[1])})"
+                return retval
+            else:
+                return ""
+
         return [
             self.name,
             simple_url(self.repository),
@@ -156,6 +180,6 @@ class OpenSourceProject:
             stringify(self.tags),
             # self.category,
             stringify(self.last_update),
-            stringify(self.last_release),
+            fmt_release(self.last_release),
             stringify(self.first_release),
         ]
