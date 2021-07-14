@@ -1,0 +1,4 @@
+projects:
+  - name: "OSeMOSYS"
+    repository: "https://github.com/OSeMOSYS/OSeMOSYS"
+  - name: "Testproj"
