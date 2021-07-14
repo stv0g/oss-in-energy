@@ -15,12 +15,9 @@ Other:
     repository: "https://github.com/test/project"
     description: "Testproject without a meaning"
     homepage: "http://www.example.com/"
-    first_release:
-      date: "2021-05-04"
+    first_release: "2021-05-04"
     license: "MIT"
   - name: "Testproject2"
     repository: "https://github.com/test/project"
     description: "Another Testproject without a meaning"
-    first_release:
-      date: "2021-05-04"
-      url: "http:/asdf.com"
+    first_release: "2021-05-04"

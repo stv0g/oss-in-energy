@@ -3,6 +3,7 @@ from datetime import date
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
 import validators
+from dateutil.parser import parse
 
 # TODO: ist this a good approach?
 # class Category(Enum):
@@ -34,7 +35,7 @@ class OpenSourceProject:
     license_name: Optional[str]
     languages: Optional[List[str]]
     tags: Optional[List[str]]
-    first_release: Optional[Tuple[date, str]]
+    first_release: Optional[date]
 
     # auto generated
     # category: str
@@ -82,7 +83,10 @@ class OpenSourceProject:
         # TODO: Validate license against enum
         # TODO: get license from API
 
-        first_release = get_dict_value(d, "first_release")
+        first_release_str = get_dict_value(d, "first_release")
+        first_release: Optional[date] = None
+        if first_release_str is not None:
+            first_release = parse(first_release_str)
 
         languages = get_dict_value(d, "languages")
         # TODO: Convert to list
