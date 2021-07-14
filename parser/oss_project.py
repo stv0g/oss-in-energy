@@ -126,7 +126,7 @@ class OpenSourceProject:
         ]
 
     def to_list(self) -> List[str]:
-        def stringify (o):
+        def stringify(o):
             if o:
                 return str(o)
             else:
