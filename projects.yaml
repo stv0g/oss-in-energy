@@ -3,6 +3,7 @@ Simulation:
     homepage: "https://www.fein-aachen.org/projects/distaix/"
     repository: "https://git.rwth-aachen.de/acs/public/simulation/DistAIXFramework/distaix"
     description: "DistAIX is a simulator for cyber-physical power systems that makes use of high performance computing techniques to scale up the simulation."
+    license: "GPLv3"
 Modeling:
   - name: "OSeMOSYS"
     repository: "https://github.com/OSeMOSYS/OSeMOSYS"
