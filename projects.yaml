@@ -1,4 +1,10 @@
-projects:
+Simulation:
+  - name: "DistAIX"
+    homepage: "https://www.fein-aachen.org/projects/distaix/"
+    repository: "https://git.rwth-aachen.de/acs/public/simulation/DistAIXFramework/distaix"
+    description: "DistAIX is a simulator for cyber-physical power systems that makes use of high performance computing techniques to scale up the simulation."
+Modeling:
   - name: "OSeMOSYS"
     repository: "https://github.com/OSeMOSYS/OSeMOSYS"
-  - name: "Testproj"
+    description: "OSeMOSYS is a full-fledged systems optimization model generator for long-term energy planning"
+    homepage: "http://www.osemosys.org/"
