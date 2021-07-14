@@ -15,7 +15,7 @@ class OpenSourceProject:
         if "name" in d:
             name = d["name"]
         else:
-            name = "PeterPan"
+            raise Exception("Project needs to have a name!")
 
         if "repository" in d:
             repo = d["repository"]
