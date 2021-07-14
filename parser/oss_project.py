@@ -126,16 +126,21 @@ class OpenSourceProject:
         ]
 
     def to_list(self) -> List[str]:
+        def stringify (o):
+            if o:
+                str(o)
+            else:
+                ""
         return [
             self.name,
             f'<a href="{self.repository}">{self.repository}</a>',
             self.description,
             f'<a href="{self.homepage}">{self.homepage}</a>',
             self.license,
-            str(self.languages),
-            str(self.tags),
+            stringify(self.languages),
+            stringify(self.tags),
             # self.category,
-            str(self.last_update),
-            str(self.last_release),
-            str(self.first_release),
+            stringify(self.last_update),
+            stringify(self.last_release),
+            stringify(self.first_release),
         ]
