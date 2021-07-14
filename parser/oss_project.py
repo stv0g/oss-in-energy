@@ -135,11 +135,18 @@ class OpenSourceProject:
             else:
                 return ""
 
+        def simple_url(url: Optional[str]) -> str:
+            if url is not None:
+                retval = f'<a href="{url}">{url}</a>'
+                return retval
+            else:
+                return ""
+
         return [
             self.name,
-            f'<a href="{self.repository}">{self.repository}</a>',
+            simple_url(self.repository),
             self.description,
-            f'<a href="{self.homepage}">{self.homepage}</a>',
+            simple_url(self.homepage),
             stringify(self.license_name),
             stringify(self.languages),
             stringify(self.tags),
