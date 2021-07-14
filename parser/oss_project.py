@@ -29,4 +29,4 @@ class OpenSourceProject:
         return ["Project", "Repository URL", "Languages"]
 
     def to_list(self) -> List[str]:
-        return [self.name, self.repository , str(self.languages)]
+        return [self.name, f'<a href="url">{self.repository}</a>' , str(self.languages)]

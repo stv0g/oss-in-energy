@@ -13,7 +13,7 @@ with open("../projects.yaml", "r") as stream:
             print(project)
             proj_list.append(project.to_list())
         with open("table.html", 'w') as htmlfile:
-            htmlfile.write(tabulate(proj_list, tablefmt='html', headers=OpenSourceProject.list_headers()))
+            htmlfile.write(tabulate(proj_list, tablefmt='unsafehtml', headers=OpenSourceProject.list_headers()))
 
     except yaml.YAMLError as exc:
         print("Error: Invalid yaml file:")
