@@ -128,9 +128,10 @@ class OpenSourceProject:
     def to_list(self) -> List[str]:
         def stringify (o):
             if o:
-                str(o)
+                return str(o)
             else:
-                ""
+                return ""
+
         return [
             self.name,
             f'<a href="{self.repository}">{self.repository}</a>',
