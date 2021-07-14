@@ -34,3 +34,4 @@ with open("../projects.yaml", "r") as stream:
     except yaml.YAMLError as exc:
         print("Error: Invalid yaml file:")
         print(exc)
+        exit(-1)
