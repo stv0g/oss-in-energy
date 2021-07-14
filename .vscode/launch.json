@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: run parser",
+            "type": "python",
+            "request": "launch",
+            "program": "yaml_to_html.py",
+            "console": "integratedTerminal",
+            "cwd": "parser",
+            "justMyCode": false
+        },
+        {
+            "name": "Debug Unit Test",
+            "type": "python",
+            "request": "test",
+            "justMyCode": false,
+        }
+    ]
+}
