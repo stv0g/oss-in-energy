@@ -11,7 +11,7 @@ class OpenSourceProject:
     languages: Optional[List[str]]
 
     @classmethod
-    def from_dict(cls, d: dict):
+    def from_dict(cls, d: dict) -> 'OpenSourceProject':
         if "name" in d:
             name = d["name"]
         else:
