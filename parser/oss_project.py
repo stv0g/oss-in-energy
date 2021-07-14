@@ -63,8 +63,8 @@ class OpenSourceProject:
             raise Exception("Project needs to have a proper description!")
 
         # Optional
-        if "homepage" in d and validators.url(d["description"]):
-            homepage = d["description"]
+        if "homepage" in d and validators.url(d["homepage"]):
+            homepage = d["homepage"]
         else:
             homepage = None
 
