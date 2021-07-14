@@ -1,7 +1,8 @@
 from dataclasses import dataclass
-from typing import Optional, List, Callable, Tuple
-import validators
 from datetime import date
+from typing import Any, Callable, Dict, List, Optional, Tuple
+
+import validators
 
 # TODO: ist this a good approach?
 # class Category(Enum):
@@ -47,8 +48,8 @@ class OpenSourceProject:
     @classmethod
     def from_dict(cls, d: dict) -> "OpenSourceProject":
         def get_dict_value(
-            d: dict, key: str, validator: Callable[[str], bool] = None
-        ) -> Optional[str]:
+            d: Dict[str, Any], key: str, validator: Callable[[str], bool] = None
+        ) -> Optional[Any]:
             if not key in d:
                 return None
             val = d[key]
@@ -68,7 +69,9 @@ class OpenSourceProject:
         assert isinstance(repository, str), "Project needs to have a valid url!"
 
         description = get_dict_value(d, "description")
-        assert isinstance(description, str), "Project needs to have a proper description!"
+        assert isinstance(
+            description, str
+        ), "Project needs to have a proper description!"
 
         # Manual
         homepage = get_dict_value(d, "homepage", validators.url)
