@@ -9,3 +9,18 @@ Modeling:
     repository: "https://github.com/OSeMOSYS/OSeMOSYS"
     description: "OSeMOSYS is a full-fledged systems optimization model generator for long-term energy planning"
     homepage: "http://www.osemosys.org/"
+
+Other:
+  - name: "Testproject"
+    repository: "https://github.com/test/project"
+    description: "Testproject without a meaning"
+    homepage: "http://www.example.com/"
+    first_release:
+      date: "2021-05-04"
+    license: "MIT"
+  - name: "Testproject2"
+    repository: "https://github.com/test/project"
+    description: "Another Testproject without a meaning"
+    first_release:
+      date: "2021-05-04"
+      url: "http:/asdf.com"
