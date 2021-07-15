@@ -25,10 +25,10 @@ class GithubRepo:
         self.url = url
         self.repo = repo
 
-    def get_last_release(self) -> Optional[Activity]:
+    def get_latest_release(self) -> Optional[Activity]:
         try:
-            last_release = self.repo.get_releases()[0]
-            return Activity(last_release.created_at.date(), last_release.html_url)
+            latest_release = self.repo.get_releases()[0]
+            return Activity(latest_release.created_at.date(), latest_release.html_url)
         except IndexError:
             return None
 

@@ -44,7 +44,7 @@ class OpenSourceProject:
     # auto generated
     # category: str
     last_update: Optional[Activity]
-    last_release: Optional[Activity]
+    latest_release: Optional[Activity]
 
     # Ideas:
     # Contributors
@@ -116,9 +116,9 @@ class OpenSourceProject:
         if repo_api is not None:
             last_update = repo_api.get_last_activity()
 
-        last_release = None
+        latest_release = None
         if repo_api is not None:
-            last_release = repo_api.get_last_release()
+            latest_release = repo_api.get_latest_release()
 
         return cls(
             name=name,
@@ -130,7 +130,7 @@ class OpenSourceProject:
             tags=tags,
             # category=category,
             last_update=last_update,
-            last_release=last_release,
+            latest_release=latest_release,
             first_release=first_release,
         )
 
@@ -178,6 +178,6 @@ class OpenSourceProject:
             safe_fmt(self.tags, str),
             # self.category,
             safe_fmt(self.last_update, Activity.as_html),
-            safe_fmt(self.last_release, Activity.as_html),
+            safe_fmt(self.latest_release, Activity.as_html),
             safe_fmt(self.first_release, str),
         ]
