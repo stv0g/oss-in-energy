@@ -66,3 +66,7 @@ class GithubRepo:
                 break
 
         return lang_list
+
+    def get_tags(self) -> List[str]:
+        gh_topics = self.repo.get_topics()
+        return gh_topics
