@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional, Tuple
+from typing import List, Optional, Tuple
 from urllib.parse import urlparse
 
 from dateutil.parser import parse
@@ -47,3 +47,17 @@ class GithubRepo:
         last_commit = self.repo.get_commits()[0]
         date = parse(last_commit.last_modified).date()
         return Activity(date, last_commit.html_url)
+
+    def get_languages(self) -> List[str]:
+        gh_langs = self.repo.get_languages()
+        lang_sum = sum(gh_langs.values())
+        current_lang_sum = 0
+        lang_list = []
+        # Only keep the 80% most used langs here
+        for lang, loc in sorted (gh_langs.items(), key = lambda itm: itm[1], reverse = True):
+            lang_list.append(lang)
+            current_lang_sum += loc
+            if current_lang_sum / lang_sum > 0.8:
+                break
+
+        return lang_list

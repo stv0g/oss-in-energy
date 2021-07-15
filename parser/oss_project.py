@@ -103,8 +103,9 @@ class OpenSourceProject:
             first_release = repo_api.get_first_release()
 
         languages = get_dict_value(d, "languages")
-        # TODO: Convert to list
-        # TODO: get languages from API
+        if languages is None:
+            if repo_api is not None:
+                languages = repo_api.get_languages()
 
         tags = get_dict_value(d, "tags")
         # TODO: Convert to list
@@ -162,13 +163,16 @@ class OpenSourceProject:
             else:
                 return ""
 
+        def fmt_list(l: List[str]) -> str:
+            return ", ".join(l)
+
         return [
             self.name,
             safe_fmt(self.repository, simple_url),
             self.description,
             safe_fmt(self.homepage, simple_url),
             safe_fmt(self.license_name, License.as_html),
-            safe_fmt(self.languages, str),
+            safe_fmt(self.languages, fmt_list),
             safe_fmt(self.tags, str),
             # self.category,
             safe_fmt(self.last_update, Activity.as_html),
