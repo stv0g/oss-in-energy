@@ -14,3 +14,15 @@ class Activity:
             return retval
         else:
             return str(self.date)
+
+@dataclass
+class License:
+    name: str
+    url: Optional[str]
+
+    def as_html(self) -> str:
+        if self.url is not None:
+            retval = f'<a href="{self.url}">{self.name}</a>'
+            return retval
+        else:
+            return str(self.name)

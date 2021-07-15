@@ -6,7 +6,7 @@ from dateutil.parser import parse
 from github import Github
 from github.Repository import Repository
 
-from project_types import Activity
+from project_types import Activity, License
 
 # TODO: Potentially use an API Token from Environment variables here
 github_api = Github()
@@ -38,6 +38,10 @@ class GithubRepo:
             return Activity(first_release.created_at.date(), first_release.html_url)
         except IndexError:
             return None
+
+    def get_license(self) -> Optional[License]:
+        gh_license = self.repo.get_license()
+        return License(gh_license.license.name , gh_license.html_url)
 
     def get_last_activity(self) -> Activity:
         last_commit = self.repo.get_commits()[0]
