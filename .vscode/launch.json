@@ -7,8 +7,8 @@
             "request": "launch",
             "program": "yaml_to_html.py",
             "console": "integratedTerminal",
-            "cwd": "parser",
-            "justMyCode": false
+            "cwd": "${workspaceFolder}/parser",
+            "justMyCode": true
         },
         {
             "name": "Debug Unit Test",
