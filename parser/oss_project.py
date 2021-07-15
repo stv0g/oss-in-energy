@@ -156,13 +156,6 @@ class OpenSourceProject:
             retval = f'<a href="{url}">{url}</a>'
             return retval
 
-        def fmt_release(release):
-            if release is not None:
-                retval = f"{release[0]} - ({simple_url(release[1])})"
-                return retval
-            else:
-                return ""
-
         def safe_fmt(o: Optional[Any], formatter: Callable[[Any], str]):
             if o:
                 return formatter(o)
