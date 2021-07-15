@@ -153,17 +153,9 @@ class OpenSourceProject:
         ]
 
     def to_list(self) -> List[str]:
-        def stringify(o):
-            if o:
-                return str(o)
-            else:
-                return ""
-
         def simple_url(url: str) -> str:
             retval = f'<a href="{url}">{url}</a>'
             return retval
-            else:
-                return ""
 
         def fmt_release(release):
             if release is not None:
