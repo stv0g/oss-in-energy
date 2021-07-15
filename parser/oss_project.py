@@ -144,7 +144,7 @@ class OpenSourceProject:
             "Tags",
             # "Category",
             "Last Update",
-            "Last Release",
+            "Latest Release",
             "First Release",
         ]
 
