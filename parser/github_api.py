@@ -5,6 +5,7 @@ from urllib.parse import urlparse
 from dateutil.parser import parse
 from github import Github
 from github.Repository import Repository
+from github.GithubException import UnknownObjectException
 
 from project_types import Activity, License
 
@@ -40,8 +41,12 @@ class GithubRepo:
             return None
 
     def get_license(self) -> Optional[License]:
-        gh_license = self.repo.get_license()
-        return License(gh_license.license.name , gh_license.html_url)
+        try:
+            gh_license = self.repo.get_license()
+            return License(gh_license.license.name , gh_license.html_url)
+        except UnknownObjectException:
+            # Probably no License found
+            return None
 
     def get_last_activity(self) -> Activity:
         last_commit = self.repo.get_commits()[0]
