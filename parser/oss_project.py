@@ -156,10 +156,9 @@ class OpenSourceProject:
             else:
                 return ""
 
-        def simple_url(url: Optional[str]) -> str:
-            if url is not None:
-                retval = f'<a href="{url}">{url}</a>'
-                return retval
+        def simple_url(url: str) -> str:
+            retval = f'<a href="{url}">{url}</a>'
+            return retval
             else:
                 return ""
 
@@ -170,16 +169,22 @@ class OpenSourceProject:
             else:
                 return ""
 
+        def safe_fmt(o: Optional[Any], formatter: Callable[[Any], str]):
+            if o:
+                return formatter(o)
+            else:
+                return ""
+
         return [
             self.name,
-            simple_url(self.repository),
+            safe_fmt(self.repository, simple_url),
             self.description,
-            simple_url(self.homepage),
-            stringify(self.license_name),
-            stringify(self.languages),
-            stringify(self.tags),
+            safe_fmt(self.homepage, simple_url),
+            safe_fmt(self.license_name, str),
+            safe_fmt(self.languages, str),
+            safe_fmt(self.tags, str),
             # self.category,
-            stringify(self.last_update),
+            safe_fmt(self.last_update, str),
             fmt_release(self.last_release),
-            stringify(self.first_release),
+            safe_fmt(self.first_release, str),
         ]
