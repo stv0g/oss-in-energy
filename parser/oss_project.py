@@ -7,6 +7,7 @@ import validators
 from dateutil.parser import parse
 
 from github_api import GithubRepo
+from project_types import Activity
 
 # TODO: ist this a good approach?
 # class Category(Enum):
@@ -42,7 +43,7 @@ class OpenSourceProject:
 
     # auto generated
     # category: str
-    last_update: str
+    last_update: Optional[Activity]
     last_release: Optional[date]
 
     # Ideas:
@@ -112,6 +113,8 @@ class OpenSourceProject:
 
         # TODO: generate from API
         last_update = None
+        if repo_api is not None:
+            last_update = repo_api.get_last_activity()
 
         last_release = None
         if repo_api is not None:
@@ -184,7 +187,7 @@ class OpenSourceProject:
             safe_fmt(self.languages, str),
             safe_fmt(self.tags, str),
             # self.category,
-            safe_fmt(self.last_update, str),
+            safe_fmt(self.last_update, Activity.as_html),
             fmt_release(self.last_release),
             safe_fmt(self.first_release, str),
         ]

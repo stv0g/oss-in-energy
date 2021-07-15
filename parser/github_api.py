@@ -2,8 +2,11 @@ from datetime import datetime
 from typing import Optional, Tuple
 from urllib.parse import urlparse
 
+from dateutil.parser import parse
 from github import Github
 from github.Repository import Repository
+
+from project_types import Activity
 
 # TODO: Potentially use an API Token from Environment variables here
 github_api = Github()
@@ -34,3 +37,8 @@ class GithubRepo:
             return self.repo.get_releases().reversed[0].created_at
         except IndexError:
             return None
+
+    def get_last_activity(self) -> Activity:
+        last_commit = self.repo.get_commits()[0]
+        date = parse(last_commit.last_modified).date()
+        return Activity(date, last_commit.html_url)
