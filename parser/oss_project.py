@@ -39,7 +39,7 @@ class OpenSourceProject:
     license_name: Optional[str]
     languages: Optional[List[str]]
     tags: Optional[List[str]]
-    first_release: Optional[date]
+    first_release: Optional[Activity]
 
     # auto generated
     # category: str
@@ -93,13 +93,11 @@ class OpenSourceProject:
         # TODO: get license from API
 
         first_release_str = get_dict_value(d, "first_release")
-        first_release: Optional[date] = None
+        first_release = None
         if first_release_str is not None:
-            first_release = parse(first_release_str).date()
+            first_release = Activity(parse(first_release_str).date(), None)
         elif repo_api is not None:
-            api_release_info = repo_api.get_first_release()
-            if api_release_info is not None:
-                first_release = api_release_info.date()
+            first_release = repo_api.get_first_release()
 
         languages = get_dict_value(d, "languages")
         # TODO: Convert to list
@@ -179,5 +177,5 @@ class OpenSourceProject:
             # self.category,
             safe_fmt(self.last_update, Activity.as_html),
             safe_fmt(self.latest_release, Activity.as_html),
-            safe_fmt(self.first_release, str),
+            safe_fmt(self.first_release, Activity.as_html),
         ]

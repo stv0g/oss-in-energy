@@ -32,9 +32,10 @@ class GithubRepo:
         except IndexError:
             return None
 
-    def get_first_release(self) -> Optional[datetime]:
+    def get_first_release(self) -> Optional[Activity]:
         try:
-            return self.repo.get_releases().reversed[0].created_at
+            first_release = self.repo.get_releases()[0]
+            return Activity(first_release.created_at.date(), first_release.html_url)
         except IndexError:
             return None
 
