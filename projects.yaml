@@ -16,8 +16,17 @@ Other:
     description: "Testproject without a meaning"
     homepage: "http://www.example.com/"
     # first_release: "2021-05-04"
-    license: "MIT"
+    # license: "MIT"
+    languages:
+      - "Rust"
+      - "Pust"
+      - "Qust"
+    tags:
+      - "Cool Project"
+      - "Awesome Energy"
+
   - name: "Testproject2"
-    repository: "https://github.com/hermitcore/libhermit-rs"
+    repository: "https://github.com/bellingard/sample_multi-language-project"
     description: "Another Testproject without a meaning"
     first_release: "2021-05-04"
+    license: "MIT"
