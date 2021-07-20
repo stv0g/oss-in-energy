@@ -4,12 +4,16 @@ Simulation:
     repository: "https://git.rwth-aachen.de/acs/public/simulation/DistAIXFramework/distaix"
     description: "DistAIX is a simulator for cyber-physical power systems that makes use of high performance computing techniques to scale up the simulation."
     license: "GPLv3"
+    languages:
+      - c++
 
   - name: Mosaik
     description: Mosaik is a flexible Smart Grid co-simulation framework.
     repository: https://gitlab.com/mosaik/mosaik
     homepage: https://mosaik.offis.de/
     license: LGPL-2.1
+    languages:
+      - python
 
 Modeling:
   - name: "OSeMOSYS"
@@ -22,12 +26,18 @@ Modeling:
     repository: https://github.com/danielePala/CIMDraw
     homepage: https://danielepala.github.io/CIMDraw/
     license: GPL-3.0
+    languages:
+      - riot
+      - javascript
 
   - name: CIMTool
     description: Creates interfaces and applications using the IEC Common Information Model (CIM).
     repository: https://github.com/arnolddevos/CIMTool
     homepage: https://wiki.cimtool.org/
     license: LGPL-2.1
+    languages:
+      - java
+      - scala
 
 Other:
   - name: "Testproject"
@@ -49,7 +59,6 @@ Other:
     description: "Another Testproject without a meaning"
     first_release: "2021-05-04"
     license: "MIT"
-
 
   - name: pandapower
     description: An easy to use open source tool for power system modeling, analysis and optimization with a high degree of automation.
