@@ -10,8 +10,12 @@ Modeling:
     description: "OSeMOSYS is a full-fledged systems optimization model generator for long-term energy planning"
     homepage: "http://www.osemosys.org/"
 
-
-
+  - name: CIMdraw
+    description: CIMDraw is a WebApp to view IEC CIM (CGMES) files
+    repository: https://github.com/danielePala/CIMDraw
+    homepage: https://danielepala.github.io/CIMDraw/
+    license: GPL-3.0
+    
 Other:
   - name: "Testproject"
     repository: "https://github.com/hermitcore/uhyve"
