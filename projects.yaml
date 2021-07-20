@@ -10,6 +10,8 @@ Modeling:
     description: "OSeMOSYS is a full-fledged systems optimization model generator for long-term energy planning"
     homepage: "http://www.osemosys.org/"
 
+
+
 Other:
   - name: "Testproject"
     repository: "https://github.com/hermitcore/uhyve"
@@ -30,3 +32,12 @@ Other:
     description: "Another Testproject without a meaning"
     first_release: "2021-05-04"
     license: "MIT"
+
+
+  - name: pandapower
+    description: An easy to use open source tool for power system modeling, analysis and optimization with a high degree of automation.
+    repository: https://github.com/e2nIEE/pandapower
+    license: BSD-3-Clause
+    homepage: http://www.pandapower.org/
+    languages:
+    - python
