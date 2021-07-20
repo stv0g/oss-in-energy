@@ -4,6 +4,13 @@ Simulation:
     repository: "https://git.rwth-aachen.de/acs/public/simulation/DistAIXFramework/distaix"
     description: "DistAIX is a simulator for cyber-physical power systems that makes use of high performance computing techniques to scale up the simulation."
     license: "GPLv3"
+
+  - name: Mosaik
+    description: Mosaik is a flexible Smart Grid co-simulation framework.
+    repository: https://gitlab.com/mosaik/mosaik
+    homepage: https://mosaik.offis.de/
+    license: LGPL-2.1
+
 Modeling:
   - name: "OSeMOSYS"
     repository: "https://github.com/OSeMOSYS/OSeMOSYS"
